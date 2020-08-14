@@ -1,0 +1,55 @@
+<div>
+    <form [formGroup]="addCouponForm" (ngSubmit)="add(formDirective)" #formDirective="ngForm">
+        <mat-form-field>
+            <mat-label>Coupon title</mat-label>
+            <input type="text" matInput formControlName="title">
+            <mat-error>Title is required</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Coupon category</mat-label>
+            <mat-select matInput formControlName="category">
+                <mat-option *ngFor="let cat of keys" [value]="cat">{{categories[cat]}}</mat-option>
+            </mat-select>
+            <mat-error>Category is required</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Coupon amount</mat-label>
+            <input type="number" matInput formControlName="amount">
+            <mat-error *ngIf="addCouponForm.controls['amount'].errors?.required">Amount is required</mat-error>
+            <mat-error *ngIf="addCouponForm.controls['amount'].errors?.min">Amount must be positive</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Coupon price</mat-label>
+            <input type="number" matInput formControlName="price">
+            <mat-error *ngIf="addCouponForm.controls['price'].errors?.required">Price is required</mat-error>
+            <mat-error *ngIf="addCouponForm.controls['price'].errors?.min">Price must be positive</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Coupon description</mat-label>
+            <textarea type="text" matInput formControlName="description"></textarea>
+            <mat-error>Description is required</mat-error>
+        </mat-form-field><br />
+
+        <mat-form-field>
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="sDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Start date is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>End date</mat-label>
+            <input matInput [min]="minDate" [matDatepicker]="picker2" formControlName="eDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error>End date is required</mat-error>
+            <mat-hint *ngIf="addCouponForm.controls['sDate'].value > addCouponForm.controls['eDate'].value">End date
+                must be after start date!</mat-hint>
+        </mat-form-field><br />
+
+        <button mat-raised-button
+            [disabled]="!addCouponForm.valid || addCouponForm.controls['sDate'].value > addCouponForm.controls['eDate'].value"
+            type="submit">Add coupon</button>
+        <button mat-raised-button (click)="back()">Back to home</button>
+    </form>
+</div>

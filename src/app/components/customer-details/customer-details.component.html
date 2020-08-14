@@ -1,0 +1,48 @@
+<div>
+    <div class="details" *ngIf="customer">
+        <h2>First name: {{customer.firstName}}, Last name: {{customer.lastName}}</h2>
+        <h4>Email: {{customer.email}}</h4>
+        <h4>Password: {{customer.password}}</h4>
+    </div>
+    <div class="main">
+        <button mat-raised-button (click)="back()">Back</button>
+        <form [formGroup]="searchFormCoupon" #formDirective="ngForm">
+            <mat-form-field>
+                <mat-label>Search By: </mat-label>
+                <mat-select matInput formControlName="searchBy">
+                    <mat-option value="category">Category</mat-option>
+                    <mat-option value="maxPrice">Max price</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- price search -->
+            <mat-form-field *ngIf="searchFormCoupon.controls['searchBy'].value != 'category'">
+                <input type="number" min="0" matInput formControlName="param">
+                <button mat-icon-button matSuffix *ngIf="searchFormCoupon.controls['param'].value" (click)="clearField(formDirective)">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+                <mat-error>Price is required</mat-error>
+            </mat-form-field>
+            <!-- category search -->
+            <mat-form-field *ngIf="searchFormCoupon.controls['searchBy'].value == 'category'">
+                <mat-label>Select category</mat-label>
+                <mat-select matInput formControlName="param">
+                    <mat-option *ngFor="let cat of keys" [value]="cat">{{categories[cat]}}</mat-option>
+                </mat-select>
+                <mat-error>Category is required</mat-error>
+            </mat-form-field>
+            <button [disabled]="!searchFormCoupon.valid" mat-raised-button (click)="search()">Search</button>
+            <span>{{searchMsg}}</span>
+        </form>
+        <br/>
+
+        <div *ngIf="showCoupons">
+            <div *ngIf="showSearchResult">
+                <app-coupon-item-cust-display *ngFor="let coupon of filteredCoupons" [coupon]="coupon"></app-coupon-item-cust-display>
+            </div>
+            <div *ngIf="!showSearchResult">
+                <app-coupon-item-cust-display *ngFor="let c of myCoupons" [coupon]="c"></app-coupon-item-cust-display>
+            </div>
+            
+        </div>
+    </div>
+</div>

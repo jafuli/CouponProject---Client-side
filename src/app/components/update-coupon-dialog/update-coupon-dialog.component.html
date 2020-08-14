@@ -1,0 +1,49 @@
+<h2 mat-dialog-title> Update coupon - <span>{{coupon.title}}</span></h2>
+<mat-dialog-content [formGroup]="updateForm">
+
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input type="text" matInput formControlName="description">
+        <mat-error>Description is required</mat-error>
+    </mat-form-field><br />
+    <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input type="number" matInput formControlName="amount">
+        <mat-error *ngIf="updateForm.controls['amount'].errors?.required">Amount is required</mat-error>
+        <mat-error *ngIf="updateForm.controls['amount'].errors?.min">Amount must be positive</mat-error>
+    </mat-form-field><br />
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input type="number" matInput formControlName="price">
+        <mat-error *ngIf="updateForm.controls['price'].errors?.required">Price is required</mat-error>
+        <mat-error *ngIf="updateForm.controls['price'].errors?.min">Price must be positive</mat-error>
+    </mat-form-field><br />
+    <!-- <mat-form-field>
+        <mat-label>Image</mat-label>
+        <input type="text" matInput formControlName="image">
+    </mat-form-field><br/> -->
+    <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="sDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>Start date is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>End Date</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="picker2" formControlName="eDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error>End date is required</mat-error>
+        
+    </mat-form-field><br/>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="back()">Back</button>
+    <button [disabled]="!updateForm.valid || updateForm.controls['sDate'].value > updateForm.controls['eDate'].value" mat-button (click)="send()">
+        Update
+    </button>
+    <mat-error *ngIf="updateForm.controls['sDate'].value > updateForm.controls['eDate'].value">End date must be after start date</mat-error>
+</mat-dialog-actions>

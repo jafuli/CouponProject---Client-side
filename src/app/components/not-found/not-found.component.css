@@ -1,0 +1,12 @@
+img{
+    position: absolute;
+    width: 1090px;
+    text-align: center;
+    top: 370px;
+    left: 765px;
+    transform: translate(-50%, -50%);
+}
+
+h3{
+    text-align: center;
+}

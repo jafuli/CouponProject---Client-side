@@ -1,0 +1,24 @@
+<div class="a">
+    <div class="body">
+
+        <h6>{{coupon.startDate}} - {{coupon.endDate}}</h6>
+        <h4>Coupon title: {{coupon.title}} , price: {{coupon.price | currency}} </h4>
+        <h5>Company: {{coupon.company.name}}</h5>
+        <h6>Category: {{coupon.category}}</h6>
+        <p>{{coupon.description}}</p>
+        <br />
+        <!-- disable if purchased -->
+        <div *ngIf="!purchased"> 
+            <button [disabled]="coupon.amount == 0" mat-raised-button (click)="openConfirmationDialog()">Purchase coupon</button><br />
+        </div>
+        <span>{{errMsg}}</span>
+        <div *ngIf="purchased">
+            <span class="purchased">purchased <mat-icon>thumb_up</mat-icon></span>
+        </div>
+    </div>
+    <div class="img">
+        <img src={{coupon.image}} alt="add image here" *ngIf="!showDefaultImg"><br /> 
+        <img src="\assets\imgs\blank_image.png" alt="addd image here" *ngIf="showDefaultImg"><br />
+    </div>
+
+</div>

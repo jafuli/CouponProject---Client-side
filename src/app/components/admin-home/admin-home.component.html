@@ -1,0 +1,82 @@
+<div>
+    <mat-tab-group selectedIndex={{tabSelect}}>
+        <div>
+            <mat-tab label="Companies">
+                <div>
+                    <button mat-raised-button (click)="toAddCompany()">Add a company</button>
+
+                    <form [formGroup]="searchFormCompany">
+                        <mat-form-field>
+                            <input type="text" placeholder="Search" matInput formControlName="param"
+                                (keyup)="searchCompany()">
+                            <button mat-icon-button matSuffix *ngIf="searchFormCompany.controls['param'].value"
+                                (click)="clearFieldComp()">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Search By: </mat-label>
+                            <mat-select class="select" matInput formControlName="searchBy">
+                                <mat-option value="id">ID</mat-option>
+                                <mat-option value="name">name</mat-option>
+                                <mat-option value="email">email</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <span>{{msgComp}}</span>
+                    </form>
+                    <br />
+
+                    <div *ngIf="showComp"> 
+                        <div *ngIf="showSearchResultCompany">
+                            <app-company-item *ngFor="let c of filteredCompany" [company]="c">
+                            </app-company-item>
+                        </div>
+                        <div *ngIf="!showSearchResultCompany">
+                            <app-company-item (newItemEvent)="spliceComp($event)" *ngFor="let c of allCompanies"
+                                [company]="c"></app-company-item>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-tab>
+        </div>
+        <div>
+            <mat-tab label="Customers">
+                <div>
+                    <button mat-raised-button (click)="toAddCustomer()">Add a customer</button>
+
+                    <form [formGroup]="searchFormCustomer">
+                        <mat-form-field>
+                            <input type="text" placeholder="Search" matInput formControlName="param"
+                                (keyup)="searchCustomer()">
+                            <button mat-icon-button matSuffix *ngIf="searchFormCustomer.controls['param'].value"
+                                (click)="clearFieldCust()">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Search By: </mat-label>
+                            <mat-select class="select" matInput formControlName="searchBy">
+                                <mat-option value="id">ID</mat-option>
+                                <mat-option value="email">email</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <span>{{msgCust}}</span>
+                    </form>
+                    <br />
+                    <div *ngIf="showCust">
+                        <div *ngIf="showSearchResultCustomer">
+                            <app-customer-item *ngFor="let cu of filteredCustomer" [customer]="cu"></app-customer-item>
+                        </div>
+                        <div *ngIf="!showSearchResultCustomer">
+                            <app-customer-item (newItemEvent)="spliceCust($event)" *ngFor="let cu of allCustomers"
+                                [customer]="cu"></app-customer-item>
+                        </div>
+                    </div>
+                </div>
+
+
+            </mat-tab>
+        </div>
+    </mat-tab-group>
+</div>

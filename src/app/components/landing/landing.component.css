@@ -1,0 +1,8 @@
+img{
+    position: absolute;
+    width: 380px;
+    text-align: center;
+    top: 180px;
+    left: 380px;
+    /* transform: translate(-50%, -50%); */
+}

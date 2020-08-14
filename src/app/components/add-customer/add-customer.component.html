@@ -1,0 +1,27 @@
+<div>
+    <form [formGroup]="addCustForm" (ngSubmit)="add(formDirective)" #formDirective="ngForm">
+        <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input type="text" matInput formControlName="fname">
+            <mat-error>First name is required</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input type="text" matInput formControlName="lname">
+            <mat-error>Last name is required</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Email name</mat-label>
+            <input type="text" matInput formControlName="email">
+            <mat-error *ngIf="addCustForm.controls['email'].errors?.required">Email is required</mat-error>
+            <mat-error *ngIf="addCustForm.controls['email'].errors?.email">Email is invalid</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error>Password is required</mat-error>
+        </mat-form-field><br />
+        <button mat-raised-button type="submit" [disabled]="!addCustForm.valid">Add customer</button>
+        <button mat-raised-button (click)="back()">Back to home</button>
+    </form>
+</div>

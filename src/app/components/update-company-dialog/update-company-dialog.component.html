@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Update Company</h2>
+<mat-dialog-content [formGroup]="updateForm">
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+        <mat-error *ngIf="updateForm.controls['email'].errors?.required">Email is required</mat-error>
+        <mat-error *ngIf="updateForm.controls['email'].errors?.email">Email is invalid</mat-error>
+    </mat-form-field><br />
+    <mat-form-field>
+        <mat-label>New Password</mat-label>
+        <input type="password" matInput formControlName="password">
+        <mat-error>Password is required</mat-error>
+    </mat-form-field><br />
+    <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="password2">
+        <mat-error>Password is required</mat-error>
+    </mat-form-field><br />
+    <!-- <span>{{errMsg}}</span> -->
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="back()">Back</button>
+    <button [disabled]="updateForm.controls['password'].value != updateForm.controls['password2'].value 
+    || !updateForm.valid" mat-button (click)="send()">
+        Update
+    </button>
+</mat-dialog-actions>

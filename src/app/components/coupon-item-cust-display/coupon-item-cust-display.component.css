@@ -1,0 +1,32 @@
+.a{
+    border: 1px solid black;
+    margin: 15px;
+    padding: 4px;
+    width: 650px;
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 2px 2px;
+}
+
+.body{
+    width: 55%;
+}
+
+.purchased{
+    color: green;
+    
+}
+
+img{
+    width: 155px;
+    padding: 13px;
+    margin: 15px;
+    right: 0;
+}
+
+.img {
+    right: 0px;
+    padding-top: 20px;
+    right: 0;
+    text-align: center;
+  }

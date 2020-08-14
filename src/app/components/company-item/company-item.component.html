@@ -1,0 +1,12 @@
+<div class="a">
+    <h6>ID: {{company.id}}</h6>
+    <h4>Company name: {{company.name}}</h4>
+
+    <span>Email: {{company.email}}</span><br />
+    <span>Password: {{company.password}}</span><br />
+
+    <button mat-raised-button (click)="openConfirmationDialog()">Delete this company</button>
+    <button mat-raised-button (click)="openDialog()">Edit this company</button>
+    <span> {{errMsg}}</span>
+    <br />
+</div>

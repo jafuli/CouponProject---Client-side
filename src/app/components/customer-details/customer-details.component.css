@@ -1,0 +1,13 @@
+.details{
+    width: 35%;
+    position: fixed;
+    right: 0;
+    padding: 20px;
+    border: solid black 1px;
+}
+
+.main{
+    width: 65%;
+    padding: 20px;
+    
+}

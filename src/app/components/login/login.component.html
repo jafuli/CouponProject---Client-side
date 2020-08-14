@@ -1,0 +1,25 @@
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email" />
+            <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required</mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].errors?.email">Email is Invalid</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" />
+            <mat-error>Password is required</mat-error>
+        </mat-form-field><br />
+        <mat-form-field>
+            <mat-label>Client Type</mat-label>
+            <mat-select matInput formControlName="clientType">
+                <mat-option value="Administrator">Administrator</mat-option>
+                <mat-option value="Company">Company</mat-option>
+                <mat-option value="Customer">Customer</mat-option>
+            </mat-select>
+        </mat-form-field><br />
+        <button type="submit" [disabled]="!loginForm.valid">Log In</button>
+    </form>
+    <span>{{msg}}</span>
+</div>

@@ -1,0 +1,12 @@
+<div class="a">
+    <h6>ID: {{customer.id}}</h6>
+    <h4>First name: {{customer.firstName}}, Last name: {{customer.lastName}}</h4>
+   
+    <span>Email: {{customer.email}}</span><br />
+    <span>Password: {{customer.password}}</span><br />
+
+    <button mat-raised-button (click)="openConfirmationDialog()">Delete this customer</button>
+    <button mat-raised-button (click)="openDialog()">Edit customer</button>
+    <span>{{errMsg}}</span>
+    <br />
+</div>

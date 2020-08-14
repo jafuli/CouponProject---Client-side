@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Edit coupon image</h2>
+<mat-dialog-content>
+
+    URL (up to 255 chars): <input type="text" [(ngModel)]="url" placeholder="Leave empty to delete image">
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="back()">Back</button>
+    <button mat-button (click)="update()">Edit image</button>
+</mat-dialog-actions>

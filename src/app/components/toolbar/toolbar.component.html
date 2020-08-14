@@ -1,0 +1,13 @@
+<div class="nav justify-content-center">
+    <mat-toolbar color="primary">
+        <button mat-raised-button (click)="toMain()" matTooltip="Home" matTooltipPosition="below">
+            <mat-icon>home</mat-icon>
+        </button>
+        <span class="toolbar-fill"></span>
+        Coupons website
+        <button *ngIf="logoutService.loginStatus == 1" mat-raised-button (click)="logout()" matTooltip="Log Out"
+            matTooltipPosition="below">
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>
