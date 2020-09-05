@@ -1,8 +1,14 @@
-button{
-    margin: 10px;
+.cursor-pointer{
+    cursor: pointer;
 }
 
-.toolbar-fill{
-    flex: 1 1 auto;
+#NavbarCollapse{
+   max-height: 200px;
+   overflow-y: auto;
 }
 
+html,
+body,
+header{
+    height: 100%;
+}

@@ -1,6 +1,17 @@
-<div>
-    <h1>Welcome to my coupons website</h1>
-    <h3>Press <a routerLink="/login">here</a> to login</h3>
-    <br/><br/>
-    <img src="\assets\imgs\Inkedpepe2.jpg" alt="landing image">
-</div>
+<main>
+    <div class="view intro-2">
+        <div class="full-bg-img">
+            <div class="mask rgba-white-light flex-center">
+                <div class="container text-center indigo-text">
+                    <div class="indigo-text text-center wow fadeInUp">
+                        <h1>Welcome to my coupons website!</h1>
+                        <br /><br />
+                        <h3 *ngIf="logoutService.loginStatus == 0">Press <a routerLink="/login">here</a> to login</h3>
+                        <h3 *ngIf="logoutService.loginStatus == 1"><a class="cursor-pointer" (click)="toMain()">Back</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

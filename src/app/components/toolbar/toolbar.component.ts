@@ -29,6 +29,7 @@ export class ToolbarComponent implements OnInit {
     this.logoutService.setLoginStatus(0);
     sessionStorage.removeItem('userRole');
     sessionStorage.removeItem('userId');
+    alert("Logged out!");
     this.router.navigate(['main']);
   }
 

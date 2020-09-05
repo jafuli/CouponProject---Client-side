@@ -1,13 +1,37 @@
-<div class="nav justify-content-center">
-    <mat-toolbar color="primary">
-        <button mat-raised-button (click)="toMain()" matTooltip="Home" matTooltipPosition="below">
-            <mat-icon>home</mat-icon>
-        </button>
-        <span class="toolbar-fill"></span>
-        Coupons website
-        <button *ngIf="logoutService.loginStatus == 1" mat-raised-button (click)="logout()" matTooltip="Log Out"
-            matTooltipPosition="below">
-            <mat-icon>exit_to_app</mat-icon>
-        </button>
-    </mat-toolbar>
-</div>
+<header>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark color-primary">
+
+        <!-- example code -->
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="#">Little Coupon Shop</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                <ul class="navbar-nav mr-auto smooth-scroll">
+                    <li class="nav-item active">
+                        <a class="nav-link cursor-pointer" (click)="toMain()">
+                            Home
+                        </a>
+                    </li>
+                    <!-- add about component -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+
+                    <li class="nav-link active cursor-pointer">
+                        <a *ngIf="logoutService.loginStatus == 1" (click)="logout()">
+                            <!-- <mat-icon>exit_to_app</mat-icon>  -->
+                            Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
